@@ -8,5 +8,5 @@ from MultistagePipeline import MultistagePipeline
 if __name__ == '__main__':
     arch = MultistagePipeline("./config.txt", "./inst.txt", "./reg.txt", "./instructionSet.txt", "./data.txt")
     arch.simulateInstructions()
-    print arch.clock
+    print arch.executionCompleteCycle
     print arch.outputTable

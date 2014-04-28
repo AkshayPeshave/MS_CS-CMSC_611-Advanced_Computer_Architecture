@@ -1,19 +1,20 @@
 -- VERSION_3
 -- START DISKCACHE
-/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/.metadata/.plugins/org.eclipse.core.resources/.projects/Project - Multipath Pipeline Simulator/com.python.pydev.analysis/v1_indexcache
+/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/.metadata/.plugins/org.eclipse.core.resources/.projects/Project - Multipath Pipeline Simulator/com.python.pydev.analysis/v1_indexcache
 .v1_indexcache
-simulate|0|/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/simulate.py
-MultistagePipeline|0|/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/MultistagePipeline.py
+simulate|0|/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/simulate.py
+MultistagePipeline|0|/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/MultistagePipeline.py
 -- END DISKCACHE
 -- START DICTIONARY
-8
-6=MultistagePipeline.__init__
+9
+7=MultistagePipeline.__init__
 5=MultistagePipeline.progressPipeline
 1=simulate
 4=MultistagePipeline.initializeMemory
-8=MultistagePipeline.initializeRegisterFile
+9=MultistagePipeline.initializeRegisterFile
+6=MultistagePipeline.simulateInstructions
 3=MultistagePipeline.prepareArchitecture
-7=MultistagePipeline.initializeRegisterStatusVector
+8=MultistagePipeline.initializeRegisterStatusVector
 2=MultistagePipeline
 -- END DICTIONARY
 -- START TREE 1
@@ -22,23 +23,24 @@ arc|1|arch!11@
 mul|1|MultistagePipeline!17@
 -- END TREE
 -- START TREE 2
-19
+20
 __i|1|__init__!2&18@
 che|1|checkHazards!2&18@
 clo|1|clock!3&19@
 dat|1|dataMemory!4&19@
 enq|1|enqueueInNextStage!2&18@
-exe|2|executionComplete!5&19@executionComplete!3&19@
+exe|3|executionComplete!5&19@executionComplete!3&19@executionCompleteCycle!6&19@
 get|1|getNextStage!2&18@
 ini|3|initializeRegisterStatusVector!2&18@initializeRegisterFile!2&18@initializeMemory!2&18@
-ins|1|instructionSet!6&19@
+ins|2|instructionSet!7&19@instructions!7&19@
+lab|1|labels!7&19@
 mul|1|multipathPipeline!3&19@
-out|1|outputTable!6&19@
-pip|1|pipelineConfiguration!6&19@
+out|1|outputTable!7&19@
+pip|1|pipelineConfiguration!7&19@
 pre|1|prepareArchitecture!2&18@
 pro|1|progressPipeline!2&18@
 rea|3|readInstructionsFile!2&18@readInstructionSet!2&18@readConfigFile!2&18@
-reg|2|register_status!7&19@registerFile!8&19@
+reg|2|register_status!8&19@registerFile!9&19@
 set|1|setRegisterStatus!2&18@
 sim|1|simulateInstructions!2&18@
 upd|2|updateOutputTableStageCompletion!2&18@updateOutputTableHazard!2&18@

@@ -163,7 +163,7 @@ class MultistagePipeline(object):
     def initializeRegisterStatusVector(self):
         '''
         ARGS : none
-        DEFN : initializes register write status vector
+        DEFN : initializes register read/write status vector
         '''
         self.register_status = {}
         for index in range(1, 33):
@@ -173,7 +173,7 @@ class MultistagePipeline(object):
     def simulateInstructions(self):
         index = 1
         while index <= len(self.instructions) :
-            if index == 1:
+            if index == 1:  # loading first instruction in pipeline
                 self.multipathPipeline["IF"].put(
                                                  [
                                                   index,
@@ -183,7 +183,7 @@ class MultistagePipeline(object):
                                                  )
                 index += 1  
                 
-            else:
+            else:  # progress existing pipeline state before attempting to fetch next instruction 
                 self.progressPipeline()
                 if self.multipathPipeline["IF"].empty():
                     self.multipathPipeline["IF"].put([
@@ -193,13 +193,22 @@ class MultistagePipeline(object):
                                                   ]
                                                  )
                     index += 1
+            
+            # ready for next clock cycle
             self.clock += 1
             
         
-        # wait for execution completion after initiating all instructions
+        # wait for execution completion after loading all instructions in pipeline
         while not self.executionComplete:
             self.progressPipeline()
             self.clock += 1
+            
+        # initialize execution completion cycle value
+        self.executionCompleteCycle = 0
+        # execution completes in cycle when last instruction completes
+        for key, value in self.outputTable[str(len(self.instructions))].items():
+            if key in ["ID", "WB"]:  # instruction can complete execution only in ID or WB
+                self.executionCompleteCycle = value if self.executionCompleteCycle < value else self.executionCompleteCycle
     
     def setRegisterStatus(self, instruction):
         '''
@@ -224,33 +233,37 @@ class MultistagePipeline(object):
         pipelineStages.reverse()
         for currentStage in pipelineStages:
             if not self.multipathPipeline[currentStage].empty():
-                instructionState = self.multipathPipeline[currentStage].get()
-                if instructionState[2] > 0:
-                    # # instruction hasn't completed current stage and persist in this stage for this cycle
-                    instructionState[2] -= 1
-                    self.multipathPipeline[currentStage].put(instructionState)
-                else: 
-                    # instruction has completed this stage
-                    nextStage = self.getNextStage(instructionState, currentStage)
-                    if nextStage != "END":
-                        # check for any instruction hazards
-                        hazardStatus = self.checkHazards(instructionState[0], nextStage)
-                        if not hazardStatus[0]:
-                            self.updateOutputTableStageCompletion(instructionState[0], currentStage)
-                            self.enqueueInNextStage(instructionState, currentStage, nextStage)
-                            
-                            # write cycle time for instruction current stage completion to file
+                # create temp queue
+                updatedStageQueue = Queue.Queue(maxsize=self.multipathPipeline[currentStage].maxsize)
+                while not self.multipathPipeline[currentStage].empty():
+                    instructionState = self.multipathPipeline[currentStage].get()
+                    if instructionState[2] > 0:
+                        # # instruction hasn't completed current stage and persist in this stage for this cycle
+                        instructionState[2] -= 1
+                        updatedStageQueue.put(instructionState)
+                    else: 
+                        # instruction has completed this stage
+                        nextStage = self.getNextStage(instructionState, currentStage)
+                        if nextStage != "END":
+                            # check for any instruction hazards
+                            hazards = self.checkHazards(instructionState[0], nextStage)
+                            if len(hazards) == 0:
+                                self.updateOutputTableStageCompletion(instructionState[0], currentStage)
+                                self.enqueueInNextStage(instructionState, currentStage, nextStage)
+                                
+                                # write cycle time for instruction current stage completion to file
+                            else:
+                                # hazards detected...log hazard in output table
+                                self.updateOutputTableHazard(instructionState[0], hazards)
+                                # stall instruction in current phase
+                                updatedStageQueue.put(instructionState)
                         else:
-                            # hazard detected...log hazard in output table
-                            self.updateOutputTableHazard(instructionState[0], hazardStatus[1])
-                            # stall instruction in current phase
-                            self.multipathPipeline[currentStage].put(instructionState)
-                    else:
-                        # instruction complete. reset write register status vector for destination register
-                        # if self.instructions[str(instructionState[0])]["opcode"].strip() not in ["sw", "s.d"]:
-                        if instructionState[1].strip() not in ["sw", "s.d"] and self.instructionSet[instructionState[1]] <> "NO_EX":
-                            self.register_status[self.instructions[str(instructionState[0])]["operands"][0].strip()]["W"] -= 1
-                        self.updateOutputTableStageCompletion(instructionState[0], currentStage)
+                            # instruction complete. reset write register status vector for destination register
+                            # if self.instructions[str(instructionState[0])]["opcode"].strip() not in ["sw", "s.d"]:
+                            if instructionState[1].strip() not in ["sw", "s.d"] and self.instructionSet[instructionState[1]] <> "NO_EX":
+                                self.register_status[self.instructions[str(instructionState[0])]["operands"][0].strip()]["W"] -= 1
+                            self.updateOutputTableStageCompletion(instructionState[0], currentStage)
+                self.multipathPipeline[currentStage] = updatedStageQueue
             else:
                 # no instruction in current stage...process next stage
                 emptyStageCount += 1
@@ -298,30 +311,35 @@ class MultistagePipeline(object):
         DEFN : method checks for instruction hazards. should be called when instruction completes current stage and before propogation to next stage.
         '''
         hazards = []
+        instruction = str(instruction)
         try:
             if self.multipathPipeline[nextStage].full():  # structural hazard
                 hazards.append("SH")
             if nextStage == "ID":
-                if not self.register_status[self.instructions[instruction]["operands"][0].strip()] == 0:
-                    if self.instructions[instruction]["opcode"].strip() in ["sw", "s.d"] or self.instructionSet[instruction] == "NO_EX":
+                if self.instructions[instruction]["opcode"].strip() in ["sw", "s.d"] or self.instructionSet[self.instructions[instruction]["opcode"]] == "NO_EX":
+                    if not self.register_status[self.instructions[instruction]["operands"][0].strip()]["W"] == 0:
                         hazards.append("RAW")
-                elif not self.register_status[self.instructions[instruction]["operands"][1].strip()] == 0:
+                if not self.register_status[self.instructions[instruction]["operands"][1].strip()]["W"] == 0:
                     hazards.append("RAW")
-                elif not self.register_status[self.instructions[instruction]["operands"][2].strip()] == 0:
-                    hazards.append("RAW")
+                if self.instructions[instruction]["opcode"].strip() not in ["sw", "s.d", "lw", "l.d"] and self.instructionSet[self.instructions[instruction]["opcode"]] <> "NO_EX":
+                    if not self.register_status[self.instructions[instruction]["operands"][2].strip()]["W"] == 0:
+                        hazards.append("RAW")
             elif nextStage == "WB":
-                if self.instructions[instruction]["opcode"] not in ["SW", "S.D"] and self.instructionSet[instruction] == "NO_EX":
-                    if not self.register_status[self.instructions[instruction]["operands"][0].strip()] == 1:
+                if self.instructions[instruction]["opcode"] not in ["sw", "s.d"] and self.instructionSet[self.instructions[instruction]["opcode"]] <> "NO_EX":
+                    if not self.register_status[self.instructions[instruction]["operands"][0].strip()]["W"] <= 1:
                         hazards.append("WAW")
                     # elif self.register_status[self.instructions[instruction]["operands"][0].strip()] == "R":
                         # return [True, "WAR"]
             
-            if len(hazards) == 0:
-                return [False]
-            else:
-                return [True, hazards]
+#             if len(hazards) == 0:
+#                 return [False]
+#             else:
+#                 return [True, hazards]
+            
         except:
-            return [False]
+            pass
+        finally:
+            return hazards
     
     def enqueueInNextStage(self, instructionState, currentStage, nextStage):
         if nextStage == "ID":

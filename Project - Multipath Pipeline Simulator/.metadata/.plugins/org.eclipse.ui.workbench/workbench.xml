@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="32" version="2.0">
+<workbench progressCount="39" version="2.0">
 <workbenchAdvisor/>
 <window height="372" maximized="true" width="650" x="64" y="368">
 <fastViewData fastViewLocation="1024"/>
@@ -34,24 +34,29 @@
 <part id="0"/>
 <part id="1"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="MultistagePipeline.py" partName="MultistagePipeline" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/MultistagePipeline.py" title="MultistagePipeline" tooltip="Project - Multipath Pipeline Simulator/MultistagePipeline.py" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="MultistagePipeline.py" partName="MultistagePipeline" path="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/MultistagePipeline.py" title="MultistagePipeline" tooltip="Project - Multipath Pipeline Simulator/MultistagePipeline.py" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/MultistagePipeline.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="10415" selectionTopPixel="3639"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="195" selectionTopPixel="0"/>
 </editor>
-<editor id="org.python.pydev.editor.PythonEditor" name="simulate.py" partName="simulate" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/simulate.py" title="simulate" tooltip="Project - Multipath Pipeline Simulator/simulate.py" workbook="DefaultEditorWorkbook">
+<editor id="org.python.pydev.editor.PythonEditor" name="simulate.py" partName="simulate" path="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/simulate.py" title="simulate" tooltip="Project - Multipath Pipeline Simulator/simulate.py" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/simulate.py"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="235" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="331" selectionTopPixel="0"/>
 </editor>
-<editor id="com.aptana.editor.text" name="config.txt" partName="config.txt" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/config.txt" title="config.txt" tooltip="Project - Multipath Pipeline Simulator/config.txt" workbook="DefaultEditorWorkbook">
+<editor id="com.aptana.editor.text" name="config.txt" partName="config.txt" path="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/config.txt" title="config.txt" tooltip="Project - Multipath Pipeline Simulator/config.txt" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/config.txt"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="94" selectionTopPixel="0"/>
 </editor>
-<editor id="com.aptana.editor.text" name="instructionSet.txt" partName="instructionSet.txt" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/instructionSet.txt" title="instructionSet.txt" tooltip="Project - Multipath Pipeline Simulator/instructionSet.txt" workbook="DefaultEditorWorkbook">
+<editor id="com.aptana.editor.text" name="instructionSet.txt" partName="instructionSet.txt" path="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/instructionSet.txt" title="instructionSet.txt" tooltip="Project - Multipath Pipeline Simulator/instructionSet.txt" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/instructionSet.txt"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.text" name="inst.txt" partName="inst.txt" path="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/inst.txt" title="inst.txt" tooltip="Project - Multipath Pipeline Simulator/inst.txt" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/inst.txt"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
@@ -72,12 +77,6 @@
 </viewState>
 </view>
 <view id="org.eclipse.debug.ui.PHPBrowserOutput" partName="Browser Output"/>
-<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
-<viewState/>
-</view>
-<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
-<viewState/>
-</view>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
@@ -104,8 +103,8 @@
 </view>
 <view id="org.python.pydev.navigator.view" partName="PyDev Package Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
-<expanded IMemento.internal.id="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator"/>
-<selected IMemento.internal.id="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/Project_Spring2014_1(1).pdf"/>
+<expanded IMemento.internal.id="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator"/>
+<selected IMemento.internal.id="/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/inst.txt"/>
 </viewState>
 </view>
 </views>
@@ -306,21 +305,42 @@
 <show_view_action id="org.eclipse.pde.runtime.LogView"/>
 <perspective_action id="com.aptana.ui.WebPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<view id="org.eclipse.ui.views.TaskList"/>
-<view id="org.eclipse.debug.ui.PHPBrowserOutput"/>
-<view id="com.python.pydev.ui.hierarchy.PyHierarchyView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
-<view id="org.eclipse.debug.ui.VariableView"/>
-<view id="org.eclipse.debug.ui.BreakpointView"/>
 <view id="org.eclipse.debug.ui.ExpressionView"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.debug.internal.ui.ConsoleFolderView" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">
+<fastViews>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.2990654"/>
+<view id="org.eclipse.ui.views.TaskList" ratio="0.3"/>
+<view id="org.eclipse.debug.ui.PHPBrowserOutput" ratio="0.3"/>
+<view id="com.python.pydev.ui.hierarchy.PyHierarchyView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@54a173eb" ratio="0.62015504" ratioLeft="800" ratioRight="490" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="0">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@3010f72e" ratio="0.5" ratioLeft="321" ratioRight="321" relationship="4" relative="org.eclipse.ui.internal.ViewStack@54a173eb">
 <folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
-<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@47d9ff16" ratio="0.5" ratioLeft="321" ratioRight="321" relationship="4" relative="org.eclipse.ui.internal.ViewStack@3010f72e">
+<folder activePageID="org.eclipse.debug.ui.ExpressionView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
@@ -333,24 +353,19 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.7488789" ratioLeft="501" ratioRight="168" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
-<page content="org.eclipse.debug.ui.PHPBrowserOutput" label="Browser Output"/>
-<page content="com.python.pydev.ui.hierarchy.PyHierarchyView" label="Hierarchy View"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.7511664" ratioLeft="483" ratioRight="160" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.PHPBrowserOutput" label="LabelNotFound"/>
+<page content="com.python.pydev.ui.hierarchy.PyHierarchyView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <page content="com.aptana.ruby.debug.ui.DisplayView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.4491018" ratioLeft="225" ratioRight="276" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<info part="org.eclipse.ui.editorss" ratio="0.49913645" ratioLeft="289" ratioRight="290" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
 <info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.7494199" ratioLeft="969" ratioRight="324" relationship="2" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
@@ -358,18 +373,13 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.4996133" ratioLeft="646" ratioRight="647" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.ExpressionView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
-<page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
-<page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.VariableView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
 <page content="com.aptana.js.debug.ui.scriptsView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.PHPStackView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -381,157 +391,159 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/Project - Multipath Pipeline Simulator/MultistagePipeline.py"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/Project - Multipath Pipeline Simulator/simulate.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" path="/Project - Multipath Pipeline Simulator/inst.txt"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" path="/Project - Multipath Pipeline Simulator/config.txt"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" path="/Project - Multipath Pipeline Simulator/instructionSet.txt"/>
 </editors>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10243" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10601" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10683" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10786" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10875" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10923" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="11024" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10056" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10100" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10165" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10243" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10601" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10683" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10786" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10875" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10923" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="11024" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10056" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="12364" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8346" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8386" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8443" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8498" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8555" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8646" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8847" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8878" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="7761" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="7809" y="0"/>
+<position/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="8346" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="9928" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10165" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="9928" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10165" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="9928" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10165" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10286" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="9928" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10165" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10243" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10601" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10683" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="11843" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="11976" y="0"/>
-</item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="12103" y="0"/>
+<position/>
 </item>
 <item historyLabel="simulate" index="1">
 <position info="not_deleted" x="235" y="0"/>
 </item>
-<item historyLabel="instructionSet.txt" index="2">
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="267" y="0"/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="305" y="0"/>
+</item>
+<item historyLabel="inst.txt" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="12103" y="0"/>
+<item historyLabel="config.txt" index="3">
+<position info="not_deleted" x="94" y="0"/>
+</item>
+<item historyLabel="instructionSet.txt" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="305" y="0"/>
 </item>
 <item historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10056" y="0"/>
+<position/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="305" y="0"/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="235" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="304" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="331" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="9290" y="0"/>
 </item>
 <item active="true" historyLabel="MultistagePipeline" index="0">
-<position info="not_deleted" x="10165" y="0"/>
+<position info="not_deleted" x="9297" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -539,6 +551,12 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@54a173eb"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -546,10 +564,17 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="org.eclipse.debug.internal.ui.ConsoleFolderView"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="inst.txt" tooltip="Project - Multipath Pipeline Simulator/inst.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/inst.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="copy.py" tooltip="/usr/lib/python2.7/copy.py">
+<persistable uri="file:/usr/lib/python2.7/copy.py"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Project_Spring2014_1(1).pdf" tooltip="Project - Multipath Pipeline Simulator/Project_Spring2014_1(1).pdf">
 <persistable path="/Project - Multipath Pipeline Simulator/Project_Spring2014_1(1).pdf"/>
 </file>
@@ -582,9 +607,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="config.txt" tooltip="Project - Multipath Pipeline Simulator/config.txt">
 <persistable path="/Project - Multipath Pipeline Simulator/config.txt"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="inst.txt" tooltip="Project - Multipath Pipeline Simulator/inst.txt">
-<persistable path="/Project - Multipath Pipeline Simulator/inst.txt"/>
 </file>
 </mruList>
 </workbench>
