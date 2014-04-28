@@ -1,0 +1,337 @@
+'''
+Created on Apr 5, 2014
+
+@author: axxe
+'''
+import io
+import collections
+from collections import defaultdict
+import Queue
+import re
+
+class MultistagePipeline(object):
+    '''
+    classdocs
+    '''
+
+    def __init__(self, configFilePath, instrFilePath, registerFilePath, instructionSetFilePath):
+        '''
+        Constructor
+        '''
+        self.pipelineConfiguration = self.readConfigFile(configFilePath)
+        self.instructionSet = self.readInstructionSet(instructionSetFilePath)
+        self.prepareArchitecture(registerFilePath)
+        self.instructions, self.labels = self.readInstructionsFile(instrFilePath) 
+        self.outputTable = {}
+        
+        
+    def readConfigFile(self, filePath):
+        configFile = io.open(filePath)
+        cfg = {}
+        
+        fileLine = configFile.readline()
+        while fileLine:
+            cfg[fileLine.split(":")[0].lower().strip()] = fileLine.split(":")[1].strip().split(",")
+            fileLine = configFile.readline()
+        return cfg
+    
+    def readInstructionSet(self, instructionSetFilePath):
+        self.instructionSet = {}
+        instructionSetFile = io.open(instructionSetFilePath)
+        fileLine = instructionSetFile.readline()
+        while fileLine:
+            self.instructionSet[fileLine.strip().split(',')[0].strip()] = fileLine.strip().split(',')[1].strip()
+            fileLine = instructionSetFile.readline()
+        
+    def readInstructionsFile(self, filePath):
+        instrFile = io.open(filePath)
+        instructions = defaultdict(dict)
+        labels = {}
+        
+        instructionIndex = 1
+        
+        instruction = instrFile.readline()
+        while instruction:
+            # extract label for instruction if any and record the reference in the label index
+            if len(instruction.split(":")) > 1:
+                label = instruction.split(":")[0].strip().lower()
+                labels[label] = str(instructionIndex)
+                # strip label from instruction
+                instruction = instruction.split(":")[1].strip().lower()
+            
+            
+            tokens = instruction.split(' ', 1)
+            opcode = tokens[0].strip()
+            if len(tokens) == 1:
+                # no operands present
+                operands = ""
+            else:  
+                # process operands present to extract register operands
+                operands = []
+                operandTokens = tokens[1].split(',')
+                for token in operandTokens:
+                    operand = token.strip()
+                    patternMatch = re.search("[[(]?r\d+,f\d+]", operand)
+                    if patternMatch:
+                        operands.append(patternMatch.strip("("))
+                    
+                
+            instructions[str(instructionIndex)]["opcode"] = opcode
+            instructions[str(instructionIndex)]["operands"] = operands
+            instructionIndex += 1
+            instruction = instrFile.readline()
+            self.outputTable[str(instructionIndex)] = [0,0,0,0]
+        
+        return instructions, labels
+
+    def prepareArchitecture(self, registerFilePath):
+        self.clock = 0
+        self.executionComplete=False
+        
+#         self.pipelineStagesStatus = {
+#                                       "IF":["NP", "GO"],
+#                                       "ID":["NP", "GO"],
+#                                       "EX":{
+#                                             "INT":{
+#                                                    "INTEX": ["NP", "GO"],
+#                                                    "MEM":["NP", "GO"]
+#                                                    },
+#                                             "FP_ADD":[("P" if self.pipelineConfiguration["fp adder"][1].lower().strip() == "yes" else "NP"),
+#                                                       "GO"],
+#                                             "FP_MUL":[("P" if self.pipelineConfiguration["fp multiplier"][1].lower().strip() == "yes" else "NP"),
+#                                                       "GO"],
+#                                             "FP_DIV":[("P" if self.pipelineConfiguration["fp divider"][1].lower().strip() == "yes" else "NP"),
+#                                                       "GO"]
+#                                             },
+#                                       "WB":["NP", "GO"]
+#                                     }
+        
+        self.multipathPipeline = {
+                                  "MST_SEQ":["IF", "ID", "INT_EX", "MEM", "FP_ADD", "FP_DIV", "FP_MUL", "WB"],
+                                  "INT_SEQ":["INT_EX", "MEM"],
+                                  "CYCLE_TIMES":{
+                                                 "IF": int(self.pipelineConfiguration["i-cache"][0].strip()),
+                                                 "ID": 1,
+                                                 "INT_EX":1,
+                                                 "MEM":int(self.pipelineConfiguration["d-cache"][0].strip()),
+                                                 "FP_ADD":int(self.pipelineConfiguration["fp adder"][0].strip()),
+                                                 "FP_MUL":int(self.pipelineConfiguration["fp multiplier"][0].strip()),
+                                                 "FP_DIV":int(self.pipelineConfiguration["fp divider"][0].strip()),
+                                                 "WB":1
+                                                 },
+                                  "IF":Queue.Queue(maxsize=1),
+                                  "ID":Queue.Queue(maxsize=1),
+#                                   "EX":{
+#                                         "INT":{
+                                               "INT_EX":Queue.Queue(maxsize=1),
+                                               "MEM":Queue.Queue(maxsize=1),
+#                                                },
+                                        "FP_ADD":Queue.Queue(maxsize=1),
+                                        "FP_MUL":Queue.Queue(maxsize=1),
+                                        "FP_DIV":Queue.Queue(maxsize=1),
+#                                         },
+                                  "WB":Queue.Queue(maxsize=1)
+                                  }
+        
+        if self.pipelineConfiguration["fp adder"][1].strip() == "yes":
+            self.multipathPipeline["EX"]["FP_ADD"].maxsize = int(self.pipelineConfiguration["fp adder"][0].strip())  
+            
+        if self.pipelineConfiguration["fp multiplier"][1].strip() == "yes":
+            self.multipathPipeline["EX"]["FP_MUL"].maxsize = int(self.pipelineConfiguration["fp multiplier"][0].strip())  
+            
+        if self.pipelineConfiguration["fp adder"][1].strip() == "yes":
+            self.multipathPipeline["EX"]["FP_DIV"].maxsize = int(self.pipelineConfiguration["fp divider"][0].strip())  
+        
+        self.initializeRegisterStatusVector()
+        self.initializeRegisterFile(registerFilePath)
+    
+    def initializeRegisterFile(self, registerFilePath):
+        registerFile = io.open(registerFilePath)
+        registerIndex = 0
+        self.registerFile = {}
+        registerValue = registerFile.readline()
+        while registerValue:
+            self.registerFile["r" + str(registerIndex)] = int(registerValue, 2)
+            registerValue = registerFile.readline()
+            
+    def initializeMemory(self, memoryFilePath):
+        memoryFile = io.open(memoryFilePath)
+        memoryWordIndex = 0
+        self.dataMemory = {}
+        memoryWord = memoryFile.readline()
+        while memoryWord:
+            self.dataMemory["r" + str(memoryWordIndex)] = int(memoryWord, 2)
+            memoryWord = memoryFile.readline()
+    
+    def initializeRegisterStatusVector(self):
+        '''
+        ARGS : none
+        DEFN : initializes register write status vector
+        '''
+        self.register_status = {}
+        for index in range(1, 33):
+            self.register_status["r" + str(index)] = 0
+            self.register_status["f" + str(index)] = 0
+    
+    def simulateInstructions(self):
+        index = 1
+        while index <= len(self.instructions) : 
+            if index == 1:
+                self.multipathPipeline["IF"].put([
+                                                  index,
+                                                  self.instructions[str(index)]["opcode"],
+                                                  self.multipathPipeline["CYCLE_TIMES"]["IF"]
+                                                  ]
+                                                 )
+                index += 1
+            else:
+                self.progressPipeline()
+                if self.multipathPipeline["IF"].empty():
+                    self.multipathPipeline["IF"].put([
+                                                  index,
+                                                  self.instructions[str(index)]["opcode"],
+                                                  self.multipathPipeline["CYCLE_TIMES"]["IF"]
+                                                  ]
+                                                 )
+                    index += 1
+                    
+            
+            self.clock += 1
+        while not self.executionComplete:
+            self.progressPipeline()
+        
+    
+    '''
+    ARGS : instruction id
+    DEFN : method should be called upon instruction issue (at instruction decode stage) to set status of registers used as operands
+    '''
+    def setRegisterStatus(self, instruction):
+        operands = self.instructions[instruction]["operands"]
+        opcode = self.instructions[instruction]["opcode"].strip()
+        if operands != "":
+            if opcode in ["SW", "S.D"] or self.instructionSet[opcode] == "NO_EX":
+                for operand in operands:
+                    if self.register_status.get(operand.strip()):
+                        self.register_status[operand.strip()] = "R"
+            else:
+                self.register_status[operands[0].strip()] = "W"
+                for operand in operands[1:]:
+                    if self.register_status.get(operand.strip()):
+                        self.register_status[operand.strip()] = "R"
+                
+    def progressPipeline(self):
+        '''
+        ARGS : none
+        DEFN : method should be called upon all but first clock cycle. It propogates (when possible) instructions through pipeline stages
+        ''' 
+        nextStage = "END"
+        for currentStage in self.multipathPipeline["MST_SEQ"].reverse():
+            if not self.multipathPipeline[currentStage].empty():
+                instructionState = self.multipathPipeline[currentStage].get()
+                if instructionState[2] > 1:
+                    # # instruction hasn't completed current stage and persist in this stage for this cycle
+                    instructionState[2] -= 1
+                    self.multipathPipeline[currentStage].put(instructionState)
+                else: 
+                    # instruction has completed this stage
+                    nextStage = self.getNextStage(instructionState, currentStage)
+                    if nextStage != "END":
+                        # check for any instruction hazards
+                        hazardsPresent = self.checkHazards(instructionState[0], nextStage)
+                        if not hazardsPresent[0]:
+                            self.updateOutputTable(instructionState[0], currentStage)
+                            self.enqueueInNextStage(instructionState, currentStage, nextStage)
+                            
+                            # write cycle time for instruction current stage completion to file
+                        else:
+                            # stall instruction in current phase
+                            self.multipathPipeline[currentStage].put(instructionState)
+                            
+                            # write instruction hazard to file
+                    else:
+                        # instruction complete. reset write register status vector for destination register
+                        if self.instructions[instructionState[0]]["opcode"].strip() not in ["SW", "S.D"]:
+                            self.register_status[self.instructions[instructionState[0]]["operands"][0].strip()] -= 1
+            else:
+                # no instruction in current stage...process next stage
+                continue
+    
+    def getNextStage(self, instructionState, currentStage):
+        '''
+        ARGS : current instruction state, current instruction stage
+        DEFN : method should be called to retrieve next stage for the instruction. 
+        ''' 
+        nextStage = ""
+        
+        if currentStage == "ID":
+            # check if instruction is branch
+            if self.instructionSet[instructionState["1"]] == "NO_EX":
+                nextStage = "END"
+            # else choose execution path 
+            elif self.instructionSet[instructionState["1"]] in ["INT", "MEM"]:
+                nextStage = "INT_EX"
+            elif self.instructionSet[instructionState["1"]] == "FP_ADD":
+                nextStage = "FP_ADD"
+            elif self.instructionSet[instructionState["1"]] == "FP_DIV":
+                nextStage = "FP_DIV"
+            elif self.instructionSet[instructionState["1"]] == "FP_MUL":
+                nextStage = "FP_MUL"
+        elif currentStage == "INT_EX":
+            # if current stage in integer execution then next stage is memory
+            nextStage = "MEM"
+        elif currentStage in ["MEM", "FP_ADD", "FP_DIV", "FP_MUL"]:
+            # if current stage is execution then next stage is write back
+            nextStage = "WB"
+        else:
+            nextStage = "ID"
+            
+        return nextStage  
+    
+    def checkHazards(self, instruction, nextStage): 
+        '''
+        ARGS : instruction id, next instruction stage
+        DEFN : method checks for instruction hazards. should be called when instruction completes current stage and before propogation to next stage.
+        '''
+        try:
+            if not self.multipathPipeline[nextStage].empty():  # structural hazard
+                return [True, "SH"]
+            elif nextStage == "ID":
+                if not self.register_status[self.instructions[instruction]["operands"][0].strip()].empty():
+                    if self.instructions[instruction]["opcode"].strip() in ["SW", "S.D"]:
+                        return [True, "RAW"]
+                elif not self.register_status[self.instructions[instruction]["operands"][1].strip()].empty():
+                    return [True, "RAW"]
+                elif not self.register_status[self.instructions[instruction]["operands"][2].strip()].empty():
+                    return [True, "RAW"]
+            elif nextStage == "WB":
+                if self.instructions[instruction]["opcode"] not in ["SW", "S.D"]:
+                    if not self.register_status[self.instructions[instruction]["operands"][0].strip()] == 1:
+                        return [True, "WAW"]
+                    # elif self.register_status[self.instructions[instruction]["operands"][0].strip()] == "R":
+                        # return [True, "WAR"]
+            
+            return [False]
+        except:
+            return [False]
+    
+    def enqueueInNextStage(self, instructionState, nextStage):
+        if nextStage == "ID":
+            # set destination register operand status to write
+            if self.instructions[instructionState[0]]["opcode"].strip() not in ["SW", "S.D"]:
+                self.register_status[self.instructions[instructionState[0]]["operands"][0].strip()] += 1
+        self.multipathPipeline[nextStage].put(instructionState[0], instructionState[1], self.multipathPipeline)
+    
+    def updateOutputTable(self, instructionIndex, currentStage):
+        if currentStage == "IF":
+            self.outputTable[instructionIndex][0]=self.clock
+        elif currentStage == "ID":
+            self.outputTable[instructionIndex][1]=self.clock
+        elif currentStage in ["INTEX", "MEM"]:
+            if currentStage == "MEM":
+                self.outputTable[instructionIndex][2]=self.clock
+        elif currentStage == "WB":
+            self.outputTable[instructionIndex][3]=self.clock
+        else:
+            self.outputTable[instructionIndex][2]=self.clock
+                
+            

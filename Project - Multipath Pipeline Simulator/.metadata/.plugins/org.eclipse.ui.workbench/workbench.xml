@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="32" version="2.0">
+<workbenchAdvisor/>
+<window height="372" maximized="true" width="650" x="64" y="368">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="132" y="30"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="com.python.pydev.debug.actionSet" itemType="typeToolBarContribution" x="68" y="30"/>
+<coolItem id="com.python.pydev.navigate.actionSet" itemType="typeToolBarContribution" x="40" y="30"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="120" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="82" y="30"/>
+<coolItem id="com.aptana.ui.globalActionSet" itemType="typeToolBarContribution" x="48" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="96" y="30"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.python.pydev.editor.PythonEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.aptana.editor.text" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1396745210881" focus="true" label="Workspace - PyDev">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="2"/>
+<part id="0"/>
+<part id="1"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor activePart="true" focus="true" id="org.python.pydev.editor.PythonEditor" name="MultistagePipeline.py" partName="MultistagePipeline" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/MultistagePipeline.py" title="MultistagePipeline" tooltip="Project - Multipath Pipeline Simulator/MultistagePipeline.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/MultistagePipeline.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="10415" selectionTopPixel="3639"/>
+</editor>
+<editor id="org.python.pydev.editor.PythonEditor" name="simulate.py" partName="simulate" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/simulate.py" title="simulate" tooltip="Project - Multipath Pipeline Simulator/simulate.py" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/simulate.py"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="235" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.text" name="config.txt" partName="config.txt" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/config.txt" title="config.txt" tooltip="Project - Multipath Pipeline Simulator/config.txt" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/config.txt"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="94" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.text" name="instructionSet.txt" partName="instructionSet.txt" path="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/instructionSet.txt" title="instructionSet.txt" tooltip="Project - Multipath Pipeline Simulator/instructionSet.txt" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Project - Multipath Pipeline Simulator/instructionSet.txt"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+</editors>
+<views>
+<view id="com.aptana.terminal.views.terminal" partName="Terminal"/>
+<view id="com.aptana.samples.ui.SamplesView" partName="Samples"/>
+<view id="com.python.pydev.ui.hierarchy.PyHierarchyView" partName="Hierarchy View">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
+</view>
+<view id="com.aptana.explorer.view" partName="App Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" GitChangedFilesFilterEnabled="" activeProject="Project - Multipath Pipeline Simulator">
+<project name="Project - Multipath Pipeline Simulator">&#x0A;<selection>&#x0A;<element path="/Project - Multipath Pipeline Simulator"/>
+</selection>
+</project>
+</viewState>
+</view>
+<view id="org.eclipse.debug.ui.PHPBrowserOutput" partName="Browser Output"/>
+<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer"/>
+<view id="com.aptana.snippets.ui.views.SnippetsView" partName="Snippets"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>&#x0A;<category IMemento.internal.id="Errors (1 item)"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="169" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.python.pydev.navigator.view" partName="PyDev Package Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0">
+<expanded IMemento.internal.id="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator"/>
+<selected IMemento.internal.id="/home/axxe/Documents/CMSC 611 Workspace/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/Project_Spring2014_1(1).pdf"/>
+</viewState>
+</view>
+</views>
+<perspectives activePart="org.python.pydev.editor.PythonEditor" activePerspective="org.python.pydev.ui.PythonPerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.aptana.ui.internal.WebPerspectiveFactory" id="com.aptana.ui.WebPerspective" label="Web"/>
+<alwaysOnActionSet id="com.aptana.browser.actionSet"/>
+<alwaysOnActionSet id="com.aptana.ruby.debug.ui.RubyDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="com.aptana.editor.common.presentation"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="com.aptana.js.debug.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.presentation"/>
+<alwaysOnActionSet id="com.aptana.ui.globalActionSet"/>
+<alwaysOnActionSet id="com.aptana.terminal.actionSet"/>
+<show_view_action id="com.aptana.browser.views.webbrowser"/>
+<show_view_action id="com.aptana.explorer.view"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="com.aptana.ui.io.remoteview"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="com.aptana.samples.ui.SamplesView"/>
+<show_view_action id="com.aptana.snippets.ui.views.SnippetsView"/>
+<show_view_action id="com.aptana.terminal.views.terminal"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.aptana.webserver.ui.view"/>
+<new_wizard_action id="com.aptana.editor.php.NewPHPProjectWizard"/>
+<new_wizard_action id="com.aptana.ui.wizards.NewWebProject"/>
+<new_wizard_action id="com.aptana.ruby.core.ui.rubyProjectWizard"/>
+<new_wizard_action id="com.aptana.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<new_wizard_action id="org.radrails.rails.ui.projectWizard"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="com.aptana.explorer.view"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="com.aptana.terminal.views.terminal"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="com.aptana.samples.ui.SamplesView"/>
+<view id="com.aptana.snippets.ui.views.SnippetsView"/>
+<fastViewBars/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="left">&#x0A;<folder activePageID="com.aptana.explorer.view" appearance="2" expanded="2">&#x0A;<page content="com.aptana.explorer.view" label="App Explorer"/>
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<page content="com.aptana.ui.io.remoteview" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7495784" ratioLeft="889" ratioRight="297" relationship="2" relative="left">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.19983137" ratioLeft="237" ratioRight="949" relationship="2" relative="left"/>
+<info folder="true" part="terminalArea" ratio="0.7488922" ratioLeft="507" ratioRight="170" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="com.aptana.terminal.views.terminal" label="Terminal"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.pde.runtime.LogView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@650d154b" ratio="0.7488922" ratioLeft="507" ratioRight="170" relationship="4" relative="left">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="com.aptana.samples.ui.SamplesView" label="Samples"/>
+<page content="com.aptana.snippets.ui.views.SnippetsView" label="Snippets"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.python.pydev.ui.perspective.PythonPerspectiveFactory" id="org.python.pydev.ui.PythonPerspective" label="PyDev"/>
+<alwaysOnActionSet id="com.aptana.browser.actionSet"/>
+<alwaysOnActionSet id="com.aptana.ruby.debug.ui.RubyDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="com.python.pydev.navigate.actionSet"/>
+<show_view_action id="org.python.pydev.views.PyCodeCoverageView"/>
+<show_view_action id="org.python.pydev.navigator.view"/>
+<show_view_action id="org.python.pydev.debug.pyunit.pyUnitView"/>
+<show_view_action id="org.eclipse.search.ui.views.SearchView"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.project.PythonProjectWizard"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.files.PythonSourceFolderWizard"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.files.PythonPackageWizard"/>
+<new_wizard_action id="org.python.pydev.ui.wizards.files.PythonModuleWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.python.pydev.navigator.view"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.python.pydev.navigator.view" appearance="2" expanded="2">
+<page content="org.python.pydev.navigator.view" label="PyDev Package Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7495784" ratioLeft="889" ratioRight="297" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25969645" ratioLeft="308" ratioRight="878" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.75" ratioLeft="480" ratioRight="160" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@48a64805" ratio="0.74943054" ratioLeft="658" ratioRight="220" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.python.pydev.debug.pyunit.pyUnitView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.debug.internal.ui.DebugPerspectiveFactory" id="org.eclipse.debug.ui.DebugPerspective" label="Debug"/>
+<alwaysOnActionSet id="com.aptana.browser.actionSet"/>
+<alwaysOnActionSet id="com.aptana.ruby.debug.ui.RubyDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="com.aptana.js.debug.ui.actionSet"/>
+<alwaysOnActionSet id="com.aptana.terminal.actionSet"/>
+<alwaysOnActionSet id="com.python.pydev.navigate.actionSet"/>
+<alwaysOnActionSet id="com.python.pydev.debug.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.python.pydev.exceptionBreakpoints"/>
+<alwaysOnActionSet id="org.python.pydev.pyPropertyTrace"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<show_view_action id="org.eclipse.debug.ui.DebugView"/>
+<show_view_action id="org.eclipse.debug.ui.VariableView"/>
+<show_view_action id="org.eclipse.debug.ui.BreakpointView"/>
+<show_view_action id="org.eclipse.debug.ui.ExpressionView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.aptana.js.debug.ui.scriptsView"/>
+<show_view_action id="com.aptana.js.debug.ui.AJAXMonitorView"/>
+<show_view_action id="com.aptana.ruby.debug.ui.DisplayView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<perspective_action id="com.aptana.ui.WebPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="org.eclipse.debug.ui.PHPBrowserOutput"/>
+<view id="com.python.pydev.ui.hierarchy.PyHierarchyView"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
+<view id="org.eclipse.debug.ui.BreakpointView"/>
+<view id="org.eclipse.debug.ui.ExpressionView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7494199" ratioLeft="969" ratioRight="324" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.7488789" ratioLeft="501" ratioRight="168" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="org.eclipse.debug.ui.PHPBrowserOutput" label="Browser Output"/>
+<page content="com.python.pydev.ui.hierarchy.PyHierarchyView" label="Hierarchy View"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<page content="com.aptana.ruby.debug.ui.DisplayView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.4491018" ratioLeft="225" ratioRight="276" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.7494199" ratioLeft="969" ratioRight="324" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.4996133" ratioLeft="646" ratioRight="647" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.ExpressionView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
+<page content="com.aptana.js.debug.ui.scriptsView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.PHPStackView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/Project - Multipath Pipeline Simulator/MultistagePipeline.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" path="/Project - Multipath Pipeline Simulator/simulate.py"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" path="/Project - Multipath Pipeline Simulator/instructionSet.txt"/>
+</editors>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10243" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10601" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10683" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10786" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10875" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10923" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="11024" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10056" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10100" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10165" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10243" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10601" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10683" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10786" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10875" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10923" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="11024" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10056" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="12364" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8346" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8386" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8443" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8498" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8555" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8646" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8847" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8878" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="7761" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="7809" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="8346" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="9928" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10165" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="9928" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10165" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="9928" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10165" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10286" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="9928" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10165" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10243" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10601" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10683" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="11843" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="11976" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="12103" y="0"/>
+</item>
+<item historyLabel="simulate" index="1">
+<position info="not_deleted" x="235" y="0"/>
+</item>
+<item historyLabel="instructionSet.txt" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="12103" y="0"/>
+</item>
+<item historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10056" y="0"/>
+</item>
+<item active="true" historyLabel="MultistagePipeline" index="0">
+<position info="not_deleted" x="10165" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Project_Spring2014_1(1).pdf" tooltip="Project - Multipath Pipeline Simulator/Project_Spring2014_1(1).pdf">
+<persistable path="/Project - Multipath Pipeline Simulator/Project_Spring2014_1(1).pdf"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Project_Spring2014(3).pdf" tooltip="Project - Multipath Pipeline Simulator/Project_Spring2014(3).pdf">
+<persistable path="/Project - Multipath Pipeline Simulator/Project_Spring2014(3).pdf"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="instructionSet.txt" tooltip="Project - Multipath Pipeline Simulator/instructionSet.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/instructionSet.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="locale.py" tooltip="/usr/lib/python2.7/locale.py">
+<persistable uri="file:/usr/lib/python2.7/locale.py"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="utf_8.py" tooltip="/usr/lib/python2.7/encodings/utf_8.py">
+<persistable uri="file:/usr/lib/python2.7/encodings/utf_8.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="simulate.py" tooltip="Project - Multipath Pipeline Simulator/simulate.py">
+<persistable path="/Project - Multipath Pipeline Simulator/simulate.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.python.pydev.editor.PythonEditor" name="MultistagePipeline.py" tooltip="Project - Multipath Pipeline Simulator/MultistagePipeline.py">
+<persistable path="/Project - Multipath Pipeline Simulator/MultistagePipeline.py"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="output.txt" tooltip="Project - Multipath Pipeline Simulator/output.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/output.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="reg.txt" tooltip="Project - Multipath Pipeline Simulator/reg.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/reg.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="data.txt" tooltip="Project - Multipath Pipeline Simulator/data.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/data.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="config.txt" tooltip="Project - Multipath Pipeline Simulator/config.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/config.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.aptana.editor.text" name="inst.txt" tooltip="Project - Multipath Pipeline Simulator/inst.txt">
+<persistable path="/Project - Multipath Pipeline Simulator/inst.txt"/>
+</file>
+</mruList>
+</workbench>

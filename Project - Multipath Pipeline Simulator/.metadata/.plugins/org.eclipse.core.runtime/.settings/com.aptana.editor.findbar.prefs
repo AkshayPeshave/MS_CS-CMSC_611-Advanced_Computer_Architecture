@@ -1,0 +1,4 @@
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\n\#Mon Apr 07 11\:30\:26 EDT 2014\n2\=\\ \n1\=SEQUENCE \n0\=SEQUENCE\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\n\#Mon Apr 07 11\:30\:26 EDT 2014\n0\=MST_SEQ\n
+com.aptana.editor.findbar.regularExpressionFindBar=true
+eclipse.preferences.version=1
