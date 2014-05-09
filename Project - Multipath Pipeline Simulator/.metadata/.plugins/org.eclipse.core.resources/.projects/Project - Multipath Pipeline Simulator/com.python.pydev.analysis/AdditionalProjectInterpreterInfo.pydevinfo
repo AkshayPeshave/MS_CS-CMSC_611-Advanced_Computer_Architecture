@@ -3,43 +3,69 @@
 /home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/.metadata/.plugins/org.eclipse.core.resources/.projects/Project - Multipath Pipeline Simulator/com.python.pydev.analysis/v1_indexcache
 .v1_indexcache
 simulate|0|/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/simulate.py
+MultistagePipeline|0|/home/axxe/Documents/GitRepositories/MS_CS-CMSC_611-Advanced_Computer_Architecture/Project - Multipath Pipeline Simulator/Project - Multipath Pipeline Simulator/MultistagePipeline.py
 -- END DISKCACHE
 -- START DICTIONARY
-1
+12
+10=MultistagePipeline.__init__
+4=MultistagePipeline.progressPipeline
 1=simulate
+8=MultistagePipeline.initializeMemory
+12=MultistagePipeline.initializeRegisterFile
+3=MultistagePipeline.executeBranch
+9=MultistagePipeline.simulateInstructions
+6=MultistagePipeline.executeMemoryOperation
+5=MultistagePipeline.prepareArchitecture
+11=MultistagePipeline.initializeRegisterStatusVector
+7=MultistagePipeline.fetchInstruction
+2=MultistagePipeline
 -- END DICTIONARY
 -- START TREE 1
-2
+14
 arc|1|arch!11@
-mul|0|
--- END TREE
--- START TREE 2
-27
-__i|0|
-bra|0|
 cac|0|
 che|0|
-clo|0|
-dat|0|
 enq|0|
 exe|0|
 fet|0|
 get|0|
-ini|0|
-ins|0|
-lab|0|
 loo|0|
-mul|0|
-out|0|
-pip|0|
-pre|0|
+msg|0|
+mul|1|MultistagePipeline!17@
 pri|0|
-pro|0|
 rea|0|
-reg|0|
-sel|0|
-set|0|
-sim|0|
 upd|0|
 wri|0|
+-- END TREE
+-- START TREE 2
+29
+__i|1|__init__!2&18@
+bra|3|branchTaken!3&19@branchTaken!4&19@branchTaken!5&19@
+cac|1|cacheMemoryAddress!2&18@
+che|1|checkHazards!2&18@
+clo|1|clock!5&19@
+dat|8|dataBusInUse!6&19@dataBusInUse!7&19@dataBusInUse!4&19@dataBusInUse!5&19@dataCacheMiss!5&19@dataCacheHit!5&19@dataCache!5&19@dataMemory!8&19@
+enq|1|enqueueInNextStage!2&18@
+exe|7|executionComplete!4&19@executionComplete!5&19@executeBranch!2&18@executeStageActions!2&18@executeMemoryOperation!2&18@executeIntegerArithmetic!2&18@executionCompleteCycle!9&19@
+fet|1|fetchInstruction!2&18@
+get|1|getNextStage!2&18@
+hal|2|halt!4&19@halt!5&19@
+ini|3|initializeRegisterStatusVector!2&18@initializeRegisterFile!2&18@initializeMemory!2&18@
+ins|5|instructionSet!10&19@instructionCache!5&19@instructionCacheHit!5&19@instructions!10&19@instructionCacheMiss!5&19@
+lab|1|labels!10&19@
+lin|0|
+loo|1|lookupDataCache!2&18@
+mul|1|multipathPipeline!5&19@
+out|1|outputTable!10&19@
+pip|1|pipelineConfiguration!10&19@
+pre|1|prepareArchitecture!2&18@
+pri|1|printOutputTable!2&18@
+pro|3|programCounter!3&19@programCounter!9&19@progressPipeline!2&18@
+rea|4|readOperands!2&18@readInstructionsFile!2&18@readInstructionSet!2&18@readConfigFile!2&18@
+reg|2|register_status!11&19@registerFile!12&19@
+sel|0|
+set|1|setRegisterStatus!2&18@
+sim|1|simulateInstructions!2&18@
+upd|2|updateOutputTableStageCompletion!2&18@updateOutputTableHazard!2&18@
+wri|2|writeOutputFile!2&18@writeBackResult!2&18@
 -- END TREE

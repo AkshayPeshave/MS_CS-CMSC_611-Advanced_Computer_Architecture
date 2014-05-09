@@ -36,16 +36,61 @@ class MultistagePipeline(object):
         while fileLine:
             cfg[fileLine.split(":")[0].lower().strip()] = fileLine.split(":")[1].strip().split(",")
             fileLine = configFile.readline()
+        
+        errorStatus = [False]
+        msg = ""
+        for key, val in cfg.iteritems():
+            patternMatch = re.search("^fp", key)
+            if patternMatch:
+                if val == None or len(val) <= 1 or val[0] == '':
+                    errorStatus = [True]
+                    msg += "Config Element: " + key + "\nError: No config entered\n\n"
+                elif int(val[0]) < 0:
+                    errorStatus = [True]
+                    msg += "Config Element: " + key + "\nError: Invalid number of cycles\n\n"   
+            else:
+                if val == None or len(val) == 0 or val[0] == '':
+                    errorStatus = [True]
+                    msg += "Config Element: " + key + "\nError: No config entered\n\n"
+                elif int(val[0]) < 0:
+                    errorStatus = [True]
+                    msg += "Config Element: " + key + "\nError: Invalid number of cycles\n\n"
+        if errorStatus[0]:
+            print "Errors in configuration file.\n\n" + msg
+            raise Exception("Errors in configuration file.\n\n" + msg)
         return cfg
     
     
     def readInstructionSet(self, instructionSetFilePath):
-        instructionSet = {}
-        instructionSetFile = io.open(instructionSetFilePath)
-        fileLine = instructionSetFile.readline().strip()
-        while fileLine:
-            instructionSet[fileLine.strip().split(',')[0].strip().lower()] = fileLine.strip().split(',')[1].strip()
+        if True:
+            instructionSet = {"hlt":"NO_EX",
+                              "j":"NO_EX",
+                              "beq":"NO_EX",
+                              "bne":"NO_EX",
+                              "dadd":"INT",
+                              "daddi":"INT",
+                              "dsub":"INT",
+                              "dsubi":"INT",
+                              "and":"INT",
+                              "andi":"INT",
+                              "or":"INT",
+                              "ori":"INT",
+                              "lw":"MEM",
+                              "sw":"MEM",
+                              "l.d":"MEM",
+                              "s.d":"MEM",
+                              "add.d":"FP_ADD",
+                              "sub.d":"FP_ADD",
+                              "mul.d":"FP_MUL",
+                              "div.d":"FP_DIV"}
+        else:
+            instructionSet = {}
+            instructionSetFile = io.open(instructionSetFilePath)
             fileLine = instructionSetFile.readline().strip()
+            while fileLine:
+                instructionSet[fileLine.strip().split(',')[0].strip().lower()] = fileLine.strip().split(',')[1].strip()
+                fileLine = instructionSetFile.readline().strip()
+        
         return instructionSet
     
         
@@ -121,6 +166,7 @@ class MultistagePipeline(object):
     def prepareArchitecture(self, registerFilePath, memoryFilePath):
         self.clock = 0
         self.executionComplete = False
+        self.halt = False
         
         self.multipathPipeline = {
                                   "MST_SEQ":["IF", "ID", "INT_EX", "MEM", "FP_ADD", "FP_DIV", "FP_MUL", "WB"],
@@ -151,7 +197,7 @@ class MultistagePipeline(object):
         if self.pipelineConfiguration["fp multiplier"][1].strip() == "yes":
             self.multipathPipeline["FP_MUL"].maxsize = int(self.pipelineConfiguration["fp multiplier"][0].strip())  
             
-        if self.pipelineConfiguration["fp adder"][1].strip() == "yes":
+        if self.pipelineConfiguration["fp divider"][1].strip() == "yes":
             self.multipathPipeline["FP_DIV"].maxsize = int(self.pipelineConfiguration["fp divider"][0].strip())  
         
         self.initializeRegisterStatusVector()
@@ -167,6 +213,7 @@ class MultistagePipeline(object):
         self.dataCacheHit = 0
         self.dataCacheMiss = 0
         self.branchTaken = False
+        self.dataBusInUse = [False]
     
     
     def initializeRegisterFile(self, registerFilePath):
@@ -213,8 +260,8 @@ class MultistagePipeline(object):
                                                   [outputIndex, self.programCounter],
                                                   self.instructions[str(self.programCounter)]["opcode"],
                                                   2 * (int(self.pipelineConfiguration["i-cache"][0]) + int(self.pipelineConfiguration["main memory"][0])),
-                                                  []
-                                                  # self.multipathPipeline["CYCLE_TIMES"]["IF"]
+                                                  [],
+                                                  ["miss", 1]
                                                   ]
                                                  )
                 self.outputTable[outputIndex] = {
@@ -310,12 +357,42 @@ class MultistagePipeline(object):
                     instructionState = self.multipathPipeline[currentStage].get()
                     if instructionState[2] > 0:
                         # # instruction hasn't completed current stage and persist in this stage for this cycle
-                        instructionState[2] -= 1
-                        updatedStageQueue.put(instructionState)
+                        
+                        # check if instruction in IF / MEM stage and is going through cache miss
+                        if currentStage in ["IF", "MEM"] and instructionState[4][0] <> "hit":
+                            # if data bus in use
+                            if self.dataBusInUse[0]:
+                                # if current instruction using data bus proceed
+                                if self.dataBusInUse[1] == instructionState[0][0]:
+                                    instructionState[2] -= 1
+                                    updatedStageQueue.put(instructionState)
+                                    if currentStage == "IF" and instructionState[2] == 0:
+                                        self.dataBusInUse = [False]
+                                else:
+                                    # stall
+                                    if instructionState[4][1] == self.clock - 1 and currentStage == "MEM":
+                                        instructionState[2] += 1
+                                    updatedStageQueue.put(instructionState)
+                            else:
+                                self.dataBusInUse = [True, instructionState[0][0], instructionState[4][1]]
+                                instructionState[2] -= 1
+                                updatedStageQueue.put(instructionState)
+                        else:  # normally proceed
+                            instructionState[2] -= 1
+                            updatedStageQueue.put(instructionState)
                     else: 
+                        # handle data bus contention flag
+                        if self.dataBusInUse[0]:
+                            if self.dataBusInUse[1] == instructionState[0][0]:
+                                self.dataBusInUse = [False]
+                                
                         # instruction has completed this stage
+                        
+                        
+                        
                         nextStage = self.getNextStage(instructionState, currentStage)
                         if nextStage != "END":
+                            
                             # check for any instruction hazards
                             hazards = self.checkHazards(instructionState[0][1], currentStage, nextStage)
                             if len(hazards) == 0:
@@ -326,6 +403,9 @@ class MultistagePipeline(object):
                                 # write cycle time for instruction current stage completion to file
                                 self.updateOutputTableStageCompletion(instructionState[0][0], currentStage)
                                 
+                                if currentStage == "IF" and instructionState[1] == "hlt" and self.halt:
+                                    return
+                            
                                 # enqueue instruction on next stage
                                 self.enqueueInNextStage(instructionState, currentStage, nextStage)
                             else:
@@ -342,6 +422,8 @@ class MultistagePipeline(object):
                                 if instructionState[1].strip() not in ["sw", "s.d"] and self.instructionSet[instructionState[1]] <> "NO_EX":
                                     self.register_status[self.instructions[str(instructionState[0][1])]["operands"][0].strip()]["W"] -= 1
                                 self.updateOutputTableStageCompletion(instructionState[0][0], currentStage)
+                                if instructionState[1] == "hlt":
+                                    self.halt = True
                             else:
                                 # hazards detected...log hazard in output table
                                 self.updateOutputTableHazard(instructionState[0][0], hazards)
@@ -404,13 +486,19 @@ class MultistagePipeline(object):
                     hazards.append("STRUCT")
             if currentStage == "ID":
                 if self.instructions[instruction]["opcode"].strip() in ["sw", "s.d"] or self.instructionSet[self.instructions[instruction]["opcode"]] == "NO_EX":
-                    if not self.register_status[self.instructions[instruction]["operands"][0].strip()]["W"] == 0:
-                        hazards.append("RAW")
+                    try:
+                        if not self.register_status[self.instructions[instruction]["operands"][0].strip()]["W"] == 0:
+                            hazards.append("RAW")
+                    except:
+                        pass
                 if not self.register_status[self.instructions[instruction]["operands"][1].strip()]["W"] == 0:
                     hazards.append("RAW")
                 if self.instructions[instruction]["opcode"].strip() not in ["sw", "s.d", "lw", "l.d"] and self.instructionSet[self.instructions[instruction]["opcode"]] <> "NO_EX":
-                    if not self.register_status[self.instructions[instruction]["operands"][2].strip()]["W"] == 0:
-                        hazards.append("RAW")
+                    try:
+                        if not self.register_status[self.instructions[instruction]["operands"][2].strip()]["W"] == 0:
+                            hazards.append("RAW")
+                    except:
+                        pass
                 if self.instructions[instruction]["opcode"] not in ["sw", "s.d"] and self.instructionSet[self.instructions[instruction]["opcode"]] <> "NO_EX":
                     if not self.register_status[self.instructions[instruction]["operands"][0].strip()]["W"] == 0:
                         hazards.append("WAW")
@@ -426,7 +514,7 @@ class MultistagePipeline(object):
 #             else:
 #                 return [True, hazards]
             
-        except:
+        except Exception as ex:
             pass
         finally:
             return hazards
@@ -454,14 +542,7 @@ class MultistagePipeline(object):
             instructionState = self.executeStageActions(instructionState, nextStage)
                                     
             # execute current stage actions for instruction
-            self.multipathPipeline[nextStage].put(
-                                              [
-                                               instructionState[0],
-                                               instructionState[1],
-                                               instructionState[2],
-                                               instructionState[3]
-                                               ]
-                                              )
+            self.multipathPipeline[nextStage].put(instructionState)
         else:
             self.multipathPipeline[nextStage].put(
                                               [
@@ -501,11 +582,16 @@ class MultistagePipeline(object):
                     [outputIndex, programCounter],
                     self.instructions[str(programCounter)]["opcode"],
                     int(self.pipelineConfiguration["i-cache"][0]) - 1,
-                    []
+                    [],
+                    ["hit"]
                     ]
             
         # cache miss...program counter not in instruction cache
         self.instructionCacheMiss += 1
+        
+        # manage data bus contention
+        if not self.dataBusInUse[0] or (self.dataBusInUse[0] and self.dataBusInUse[2] == self.clock):
+            self.dataBusInUse = [True, outputIndex, self.clock]
         
         # load code memory block into instruction cache
         block = []
@@ -523,7 +609,8 @@ class MultistagePipeline(object):
                 [outputIndex, programCounter],
                 self.instructions[str(programCounter)]["opcode"],
                 2 * (int(self.pipelineConfiguration["i-cache"][0]) + int(self.pipelineConfiguration["main memory"][0])) - 1,
-                []
+                [],
+                ["miss", self.clock]
                 ]
 
 
@@ -551,14 +638,21 @@ class MultistagePipeline(object):
                 self.executeMemoryOperation(instructionState)
         elif currentStage == "WB":
             # write back result in register for arithmetic instructions
-            if (self.instructionSet[instructionState[1]] not in ["NO_EX", "MEM"] 
+            if (self.instructionSet[instructionState[1]] not in ["NO_EX"] 
                 and 
                 not re.search("\.d$", instructionState[1])):
-                self.writeBackResult(instructionState)
+                if not (self.instructionSet[instructionState[1]] == "MEM"
+                        and
+                        instructionState[1] <> "lw"):
+                    self.writeBackResult(instructionState)
             
-        returnState = instructionState[:3]
-        returnState.append(instructionContext if len(instructionContext) <> 0 else instructionState[3])
-        return returnState
+        
+        if len(instructionContext) == 0:
+            return instructionState
+        else:
+            returnState = instructionState[:3]
+            returnState.append(instructionContext)
+            return returnState
 
     
     def readOperands(self, instructionState, instructionContext): 
@@ -570,10 +664,18 @@ class MultistagePipeline(object):
     
     
     def executeBranch(self, instructionState, instructionContext):
+        branchTakenLabel = ""
         if instructionState[1] == "j":
             # jump to label
+            
             branchTakenLabel = self.instructions[str(instructionState[0][1])]["operands"][0]
-            self.programCounter = int(self.labels[branchTakenLabel])
+            
+            try:
+                self.programCounter = int(self.labels[branchTakenLabel])
+            except LookupError:
+                print "Label \"" + self.instructions[str(instructionState[0][1])]["operands"][0] + "\" missing in instruction file."
+                raise Exception("Label \"" + self.instructions[str(instructionState[0][1])]["operands"][0] + "\" missing in instruction file.")
+                    
             self.branchTaken = True
         else:
             # read register operands
@@ -582,17 +684,28 @@ class MultistagePipeline(object):
                     instructionContext.append(self.registerFile[operand])
                 else:
                     instructionContext.append(operand)
+        
             # read branching label
             branchTakenLabel = self.instructions[str(instructionState[0][1])]["operands"][2]
+            
             
             # evaluate branching decision
             if instructionState[1] == "bne":
                 if instructionContext[0] <> instructionContext[1]:
-                    self.programCounter = int(self.labels[branchTakenLabel])
+                    try:
+                        self.programCounter = int(self.labels[branchTakenLabel])
+                    except LookupError:
+                        print "Label \"" + branchTakenLabel + "\" missing in instruction file."
+                        raise Exception("Label \"" + branchTakenLabel + "\" missing in instruction file.")
                     self.branchTaken = True
             elif instructionState[1] == "beq":
                 if instructionContext[0] == instructionContext[1]:
-                    self.programCounter = int(self.labels[branchTakenLabel])
+                    try:
+                        self.programCounter = int(self.labels[branchTakenLabel])
+                    except LookupError:
+                        print "Label \"" + branchTakenLabel + "\" missing in instruction file."
+                        raise Exception("Label \"" + branchTakenLabel + "\" missing in instruction file.")
+                    
                     self.branchTaken = True            
             
     
@@ -611,22 +724,30 @@ class MultistagePipeline(object):
     
     
     def executeMemoryOperation(self, instructionState):
+        instructionState.append(["hit"])
+        
         # access cache and set context to latency of operation 
-        if not not re.search("\.d$", instructionState[1]):
-            if self.lookupDataCache(instructionState[3][0]):
-                # cache hit
-                self.dataCacheHit += 1
-                instructionState[2] = int(self.pipelineConfiguration["d-cache"][0]) - 1
-            else:
-                # cache miss
-                self.dataCacheMiss += 1
-                
-                # insert looked up address in cache
-                self.cacheMemoryAddress(instructionState[3][0])
-                
-                instructionState[2] = 2 * (int(self.pipelineConfiguration["d-cache"][0]) + 
-                                           int(self.pipelineConfiguration["main memory"][0])) - 1
+        if self.lookupDataCache(instructionState[3][0]):
+            # cache hit
+            self.dataCacheHit += 1
+            instructionState[2] = int(self.pipelineConfiguration["d-cache"][0]) - 1
             
+        else:
+            # cache miss
+            self.dataCacheMiss += 1
+            
+            # manage data bus contention
+            instructionState[4] = ["miss", self.clock]
+            if not self.dataBusInUse[0]:
+                self.dataBusInUse = [True, instructionState[0][0], self.clock]
+            
+            # insert looked up address in cache
+            self.cacheMemoryAddress(instructionState[3][0])
+            
+            instructionState[2] = 2 * (int(self.pipelineConfiguration["d-cache"][0]) + 
+                                       int(self.pipelineConfiguration["main memory"][0])) - 1
+        
+        if instructionState[1] in ["s.d", "l.d"]:
             # perform check for second word
             if self.lookupDataCache(int(instructionState[3][0]) + 4):
                 # cache hit
@@ -636,32 +757,27 @@ class MultistagePipeline(object):
                 # cache miss
                 self.dataCacheMiss += 1
                 
+                # manage data bus contention
+                instructionState[4] = ["miss", self.clock]
+                if not self.dataBusInUse[0]:
+                    self.dataBusInUse = [True, instructionState[0][0], self.clock]
+                
                 # insert looked up address in cache
                 self.cacheMemoryAddress(int(instructionState[3][0]) + 4)
                 
                 instructionState[2] += 2 * (int(self.pipelineConfiguration["d-cache"][0]) + 
                                            int(self.pipelineConfiguration["main memory"][0]))
-        else:
-            if self.lookupDataCache(instructionState[3][1]):
-                # cache hit
-                self.dataCacheHit += 1
-                instructionState[2] = int(self.pipelineConfiguration["d-cache"][0]) - 1
-            else:
-                # cache miss
-                self.dataCacheMiss += 1
-                
-                # insert looked up address in cache
-                self.cacheMemoryAddress(instructionState[3][1]) 
-                
-                instructionState[2] = 2 * (int(self.pipelineConfiguration["d-cache"][0]) + 
-                                           int(self.pipelineConfiguration["main memory"][0])) - 1   
-            
-#             if instructionState[1]=="lw":
-#                 #load instruction
-#                 instructionState[3]
-#             else:
-#                 # store integer value at memory address
-#                 self.dataMemory[instructionState[3][1] % 100] = instructionState[3][0]
+
+        if instructionState[1] == "lw":
+            # load instruction
+            translatedAddress = (int(instructionState[3][0]) - 256) / 4
+            memVal = self.dataMemory[str(translatedAddress)]
+            instructionState[3] = [memVal]
+        elif instructionState[1] == "sw":
+            # store integer value at memory address
+            translatedAddress = (int(instructionState[3][0]) - 256) / 4
+            val = self.registerFile[self.instructions[str(instructionState[0][1])]["operands"][0]]
+            self.dataMemory[str(translatedAddress)] = val
                                                   
 
     
@@ -687,6 +803,7 @@ class MultistagePipeline(object):
         
     
     def cacheMemoryAddress(self, address):
+        
         blockOffset = int(address / 4) % 4
         cacheSet = int(int(address / 4) / 4) % 2
         block = []
@@ -720,7 +837,7 @@ class MultistagePipeline(object):
                     str(outputVector["WAR"]) + "\t" + \
                     str(outputVector["STRUCT"])
             
-    def writeOutputFile(self):
+    def writeOutputFile(self, outputFilePath):
         instructionFile = io.open("./inst.txt")
         instruction = instructionFile.readline()
         instructions = []
@@ -728,16 +845,25 @@ class MultistagePipeline(object):
             instructions.append(instruction.strip())
             instruction = instructionFile.readline()
         
-        outputFile = io.open("./result.txt", "wb")
+        # outputFile = io.open("./result.txt", "wb")
+        outputFile = io.open(outputFilePath, "wb")
         
-        line = "INSTRUCTION\tIF\tID\tEX\tWB\tRAW\tWAW\tWAR\tSTRUCT" + "\n"
+        line = "INSTRUCTION\t\tIF\tID\tEX\tWB\tRAW\tWAW\tWAR\tSTRUCT" + "\n"
         outputFile.write(line)
         for outputIndex, outputVector in self.outputTable.items():
-            line = instructions[outputVector["INSTR"] - 1] + "\t" + \
-                   str(outputVector["IF"]) + "\t" + \
-                   str(outputVector["ID"]) + "\t" + \
-                   str(outputVector["EX"]) + "\t" + \
-                   str(outputVector["WB"]) + "\t" + \
+#             if len(instructions[outputVector["INSTR"] - 1]) <= 6:
+#                 line = instructions[outputVector["INSTR"] - 1] + "\t\t\t"
+            if len(instructions[outputVector["INSTR"] - 1]) <= 7:
+                line = instructions[outputVector["INSTR"] - 1] + "\t\t\t"
+            elif len(instructions[outputVector["INSTR"] - 1]) > 15:
+                line = instructions[outputVector["INSTR"] - 1] + "\t"
+            else:
+                line = instructions[outputVector["INSTR"] - 1] + "\t\t"
+                
+            line += (str(outputVector["IF"]) if outputVector["IF"] <> 0 else "  ") + "\t" + \
+                   (str(outputVector["ID"]) if outputVector["ID"] <> 0 else "  ") + "\t" + \
+                   (str(outputVector["EX"]) if outputVector["EX"] <> 0 else "  ") + "\t" + \
+                   (str(outputVector["WB"]) if outputVector["WB"] <> 0 else "  ") + "\t" + \
                    ("Y" if outputVector["RAW"] else "N") + "\t" + \
                    ("Y" if outputVector["WAW"] else "N") + "\t" + \
                    ("Y" if outputVector["WAR"] else "N") + "\t" + \
@@ -745,7 +871,7 @@ class MultistagePipeline(object):
             
             outputFile.write(line)
             
-        outputFile.write("Total number of access requests for instruction cache: " + str(self.instructionCacheHit + self.instructionCacheMiss))
+        outputFile.write("\nTotal number of access requests for instruction cache: " + str(self.instructionCacheHit + self.instructionCacheMiss))
         outputFile.write("\nNumber of instruction cache hits: " + str(self.instructionCacheHit))
         outputFile.write("\nTotal number of access requests for data cache: " + str(self.dataCacheHit + self.dataCacheMiss))
         outputFile.write("\nNumber of data cache hits: " + str(self.dataCacheHit))

@@ -2,17 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="true" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="wholeword"/>
-		<item value="setRegisterStatus" key="selection"/>
+		<item value="missing label" key="selection"/>
 		<list key="findhistory">
+			<item value="missing label"/>
+			<item value="\n"/>
+			<item value=","/>
+			<item value="HLT,NO_EX&#x0A;J,NO_EX&#x0A;BEQ,NO_EX&#x0A;BNE,NO_EX&#x0A;DADD,INT&#x0A;DADDI,INT&#x0A;DSUB,INT&#x0A;DSUBI,INT&#x0A;AND,INT&#x0A;ANDI,INT&#x0A;OR,INT&#x0A;ORI,INT&#x0A;LW,MEM&#x0A;SW,MEM&#x0A;L.D,MEM&#x0A;S.D,MEM&#x0A;ADD.D,FP_ADD&#x0A;SUB.D,FP_ADD&#x0A;MUL.D,FP_MUL&#x0A;DIV.D,FP_DIV"/>
 			<item value="setRegisterStatus"/>
 			<item value="outputTable"/>
 			<item value="deepcopy"/>
 			<item value="SEQUENCE"/>
-			<item value="SEQUENCE "/>
-			<item value=" "/>
 		</list>
 	</section>
 </section>

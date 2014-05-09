@@ -1,4 +1,4 @@
-FIND_BAR_DECORATOR_FIND_ENTRIES=\#\n\#Sat May 03 19\:58\:42 EDT 2014\n5\=\\ \n4\=SEQUENCE \n3\=SEQUENCE\n2\=deepcopy\n1\=outputTable\n0\=setRegisterStatus\n
-FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\n\#Mon Apr 07 11\:30\:26 EDT 2014\n0\=MST_SEQ\n
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\n\#Thu May 08 22\:58\:18 EDT 2014\n8\=SEQUENCE \n7\=SEQUENCE\n6\=deepcopy\n5\=outputTable\n4\=setRegisterStatus\n3\=HLT,NO_EX\\nJ,NO_EX\\nBEQ,NO_EX\\nBNE,NO_EX\\nDADD,INT\\nDADDI,INT\\nDSUB,INT\\nDSUBI,INT\\nAND,INT\\nANDI,INT\\nOR,INT\\nORI,INT\\nLW,MEM\\nSW,MEM\\nL.D,MEM\\nS.D,MEM\\nADD.D,FP_ADD\\nSUB.D,FP_ADD\\nMUL.D,FP_MUL\\nDIV.D,FP_DIV\n2\=,\n1\=\\\\n\n0\=missing label\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\n\#Thu May 08 18\:35\:06 EDT 2014\n2\=MST_SEQ\n1\="\\\:"\n0\="\\\\n"\n
 com.aptana.editor.findbar.regularExpressionFindBar=true
 eclipse.preferences.version=1
